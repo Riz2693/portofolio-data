@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- Background -->
+  <rect width="200" height="200" fill="#0E1117" rx="10"/>
+
+  <!-- Streamlit logo inspired circle -->
+  <circle cx="100" cy="60" r="30" fill="#FF2B2B" opacity="0.1"/>
+  <circle cx="100" cy="60" r="25" fill="none" stroke="#FF2B2B" stroke-width="2"/>
+
+  <!-- Streamlit branding text -->
+  <text x="100" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#FF2B2B">Streamlit</text>
+
+  <!-- Air quality elements - circular gauge -->
+  <g transform="translate(100, 115)">
+    <!-- Gauge background -->
+    <circle cx="0" cy="0" r="25" fill="none" stroke="#333" stroke-width="2"/>
+
+    <!-- Quality indicator arc - Green -->
+    <path d="M -20,0 A 20,20 0 0,1 15,12" fill="none" stroke="#4CAF50" stroke-width="3" stroke-linecap="round"/>
+
+    <!-- Needle -->
+    <line x1="0" y1="0" x2="12" y2="10" stroke="#FF2B2B" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="0" cy="0" r="3" fill="#FF2B2B"/>
+
+    <!-- AQI label -->
+    <text x="0" y="5" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#999" font-weight="bold">AQI</text>
+  </g>
+
+  <!-- Project label -->
+  <text x="100" y="175" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#999">Air Quality Analysis</text>
+</svg>

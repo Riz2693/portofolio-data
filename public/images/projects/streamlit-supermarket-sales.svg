@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- Background -->
+  <rect width="200" height="200" fill="#0E1117" rx="10"/>
+
+  <!-- Streamlit logo inspired circle -->
+  <circle cx="100" cy="60" r="30" fill="#FF2B2B" opacity="0.1"/>
+  <circle cx="100" cy="60" r="25" fill="none" stroke="#FF2B2B" stroke-width="2"/>
+
+  <!-- Streamlit branding text -->
+  <text x="100" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#FF2B2B">Streamlit</text>
+
+  <!-- Chart/Dashboard elements -->
+  <g transform="translate(40, 100)">
+    <!-- Bar chart -->
+    <rect x="0" y="30" width="12" height="40" fill="#FF2B2B"/>
+    <rect x="20" y="15" width="12" height="55" fill="#FF2B2B" opacity="0.7"/>
+    <rect x="40" y="20" width="12" height="50" fill="#FF2B2B" opacity="0.5"/>
+    <rect x="60" y="25" width="12" height="45" fill="#FF2B2B" opacity="0.3"/>
+
+    <!-- Axis -->
+    <line x1="-5" y1="70" x2="80" y2="70" stroke="#666" stroke-width="1"/>
+    <line x1="-5" y1="0" x2="-5" y2="70" stroke="#666" stroke-width="1"/>
+  </g>
+
+  <!-- Project label -->
+  <text x="100" y="175" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#999">Supermarket Sales Dashboard</text>
+</svg>

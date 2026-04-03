@@ -1,30 +1,33 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
-  <!-- Background -->
-  <rect width="200" height="200" fill="#0E1117" rx="10"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Air Quality Dashboard cover">
+  <defs>
+    <linearGradient id="bg_1035624735" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#14b8a6"/>
+    </linearGradient>
+    <linearGradient id="glass_1035624735" x1="250" y1="150" x2="980" y2="500" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0.25"/>
+    </linearGradient>
+  </defs>
 
-  <!-- Streamlit logo inspired circle -->
-  <circle cx="100" cy="60" r="30" fill="#FF2B2B" opacity="0.1"/>
-  <circle cx="100" cy="60" r="25" fill="none" stroke="#FF2B2B" stroke-width="2"/>
+  <rect width="1200" height="630" fill="url(#bg_1035624735)"/>
 
-  <!-- Streamlit branding text -->
-  <text x="100" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#FF2B2B">Streamlit</text>
+  <circle cx="315" cy="155" r="170" fill="#8b5cf6" fill-opacity="0.16"/>
+  <circle cx="1055" cy="520" r="210" fill="#FFFFFF" fill-opacity="0.07"/>
 
-  <!-- Air quality elements - circular gauge -->
-  <g transform="translate(100, 115)">
-    <!-- Gauge background -->
-    <circle cx="0" cy="0" r="25" fill="none" stroke="#333" stroke-width="2"/>
+  <rect x="250" y="150" width="705" height="340" rx="28" fill="url(#glass_1035624735)" stroke="#FFFFFF" stroke-opacity="0.28"/>
+  <rect x="280" y="190" width="290" height="16" rx="8" fill="#FFFFFF" fill-opacity="0.86"/>
+  <rect x="280" y="220" width="460" height="12" rx="6" fill="#CDE7FF" fill-opacity="0.85"/>
 
-    <!-- Quality indicator arc - Green -->
-    <path d="M -20,0 A 20,20 0 0,1 15,12" fill="none" stroke="#4CAF50" stroke-width="3" stroke-linecap="round"/>
+  <rect x="280" y="230" width="315" height="12" rx="6" fill="#E2E8F0" fill-opacity="0.72"/>
+      <rect x="280" y="268" width="412" height="12" rx="6" fill="#E2E8F0" fill-opacity="0.72"/>
+      <rect x="280" y="306" width="509" height="12" rx="6" fill="#E2E8F0" fill-opacity="0.72"/>
+      <rect x="280" y="344" width="286" height="12" rx="6" fill="#E2E8F0" fill-opacity="0.72"/>
 
-    <!-- Needle -->
-    <line x1="0" y1="0" x2="12" y2="10" stroke="#FF2B2B" stroke-width="2" stroke-linecap="round"/>
-    <circle cx="0" cy="0" r="3" fill="#FF2B2B"/>
+  <rect x="280" y="410" width="220" height="38" rx="19" fill="#8b5cf6" fill-opacity="0.92"/>
+  <text x="390" y="435" text-anchor="middle" fill="#0B1220" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="16" font-weight="700">PROJECT</text>
 
-    <!-- AQI label -->
-    <text x="0" y="5" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#999" font-weight="bold">AQI</text>
-  </g>
-
-  <!-- Project label -->
-  <text x="100" y="175" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#999">Air Quality Analysis</text>
+  <text x="600" y="548" text-anchor="middle" fill="#F8FAFC" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="40" font-weight="700">Air Quality Dashboard</text>
+  <text x="600" y="580" text-anchor="middle" fill="#CBD5E1" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="22">Streamlit • Data Analysis</text>
 </svg>

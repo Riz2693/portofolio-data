@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Growth Track cover">
+  <defs>
+    <linearGradient id="bg_1455983941" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0b1324"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+    <linearGradient id="glass_1455983941" x1="250" y1="150" x2="980" y2="500" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#22d3ee" stop-opacity="0.25"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg_1455983941)"/>
+
+  <circle cx="301" cy="191" r="170" fill="#22d3ee" fill-opacity="0.16"/>
+  <circle cx="1055" cy="520" r="210" fill="#FFFFFF" fill-opacity="0.07"/>
+
+  <rect x="250" y="150" width="711" height="340" rx="28" fill="url(#glass_1455983941)" stroke="#FFFFFF" stroke-opacity="0.28"/>
+  <rect x="280" y="190" width="290" height="16" rx="8" fill="#FFFFFF" fill-opacity="0.86"/>
+  <rect x="280" y="220" width="460" height="12" rx="6" fill="#CDE7FF" fill-opacity="0.85"/>
+
+  <rect x="280" y="230" width="481" height="12" rx="6" fill="#E2E8F0" fill-opacity="0.72"/>
+      <rect x="280" y="268" width="258" height="12" rx="6" fill="#E2E8F0" fill-opacity="0.72"/>
+      <rect x="280" y="306" width="355" height="12" rx="6" fill="#E2E8F0" fill-opacity="0.72"/>
+      <rect x="280" y="344" width="452" height="12" rx="6" fill="#E2E8F0" fill-opacity="0.72"/>
+      <rect x="280" y="382" width="229" height="12" rx="6" fill="#E2E8F0" fill-opacity="0.72"/>
+
+  <rect x="280" y="410" width="220" height="38" rx="19" fill="#22d3ee" fill-opacity="0.92"/>
+  <text x="390" y="435" text-anchor="middle" fill="#0B1220" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="16" font-weight="700">PROJECT</text>
+
+  <text x="600" y="548" text-anchor="middle" fill="#F8FAFC" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="40" font-weight="700">Growth Track</text>
+  <text x="600" y="580" text-anchor="middle" fill="#CBD5E1" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="22">Mobile • Deep Learning</text>
+</svg>

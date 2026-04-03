@@ -125,7 +125,8 @@ export default function Home() {
     "Semua",
     ...(techStack || []).map((t) => t.kategori),
   ];
-  const displayedSkills =
+
+  const visibleDisplayedSkills =
     activeTechFilter === "Semua"
       ? (techStack || []).flatMap((t) => t.skills)
       : (techStack || []).find((t) => t.kategori === activeTechFilter)
@@ -673,9 +674,9 @@ export default function Home() {
                 ))}
               </div>
             )}
-            {displayedSkills && displayedSkills.length > 0 ? (
+            {visibleDisplayedSkills && visibleDisplayedSkills.length > 0 ? (
               <div className="flex flex-wrap justify-center md:justify-center gap-2 md:gap-3">
-                {displayedSkills.map((skill, idx) => {
+                {visibleDisplayedSkills.map((skill, idx) => {
                   const skillName =
                     typeof skill === "string" ? skill : skill.nama;
                   const skillImage =

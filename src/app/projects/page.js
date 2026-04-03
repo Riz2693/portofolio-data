@@ -2,6 +2,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { profil, projects } from "../../data";
 import { ArrowLeft, ArrowRight } from "lucide-react";
@@ -112,9 +113,12 @@ export default function AllProjects() {
                                     {/* Gambar Cover Project */}
                                     <div className="h-40 md:h-44 w-full bg-slate-100 dark:bg-slate-800 relative overflow-hidden flex items-center justify-center print:hidden shrink-0">
                                         {item.image ? (
-                                            <img
+                                            <Image
                                                 src={item.image}
                                                 alt={item.judul}
+                                                fill
+                                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                                unoptimized
                                                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                                             />
                                         ) : (

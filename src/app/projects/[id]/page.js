@@ -1,6 +1,7 @@
 // src/app/projects/[id]/page.js
 "use client";
 
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { use } from "react";
 import { profil, projects } from "../../../data";
@@ -137,10 +138,13 @@ export default function ProjectDetail({ params }) {
                     </div>
 
                     {project.image ? (
-                        <div className="w-full h-[250px] md:h-[450px] rounded-2xl mb-12 overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm">
-                            <img
+                        <div className="relative w-full h-[250px] md:h-[450px] rounded-2xl mb-12 overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm">
+                            <Image
                                 src={project.image}
                                 alt={project.judul}
+                                fill
+                                sizes="100vw"
+                                unoptimized
                                 className="w-full h-full object-cover"
                             />
                         </div>

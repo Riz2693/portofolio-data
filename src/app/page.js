@@ -3,6 +3,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   profil,
   projects,
@@ -162,10 +163,14 @@ export default function Home() {
         <section className="relative flex flex-col items-center justify-center min-h-screen w-full px-4 text-center overflow-hidden print:min-h-0 print:py-10">
           <div className="absolute inset-0 w-full h-full z-0 print:hidden bg-slate-900">
             {heroImages.map((src, idx) => (
-              <img
+              <Image
                 key={idx}
                 src={src}
                 alt={`Hero Background ${idx + 1}`}
+                fill
+                sizes="100vw"
+                priority={idx === 0}
+                unoptimized
                 className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${idx === currentHeroImage ? "opacity-100" : "opacity-0"
                   }`}
               />
@@ -581,9 +586,12 @@ export default function Home() {
                 >
                   <div className="h-40 md:h-44 w-full bg-slate-100 dark:bg-slate-800 relative overflow-hidden flex items-center justify-center print:hidden shrink-0">
                     {item.image ? (
-                      <img
+                      <Image
                         src={item.image}
                         alt={item.judul}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        unoptimized
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                     ) : (
@@ -678,9 +686,12 @@ export default function Home() {
                       className="flex items-center gap-2 bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-200 text-xs md:text-sm font-semibold px-3 py-1.5 md:py-2 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-emerald-500 dark:hover:border-emerald-500 transition-colors print:bg-white print:border-gray-300 print:text-black shadow-sm hover:shadow-md"
                     >
                       {skillImage && (
-                        <img
+                        <Image
                           src={skillImage}
                           alt={skillName}
+                          width={16}
+                          height={16}
+                          unoptimized
                           className="w-4 h-4 object-contain print:hidden"
                         />
                       )}

@@ -43,16 +43,16 @@ export const projects = [
 
             videos: [
                 // cukup pakai url YouTube/Vimeo, sistem akan auto-embed
-                // {
-                //   title: "Demo Aplikasi (YouTube)",
-                //   url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-                // },
-                // // kalau mau kontrol penuh, isi embedUrl langsung
-                // {
-                //   title: "Presentasi Final (Embed URL)",
-                //   embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-                //   url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-                // },
+                {
+                    title: "Demo Aplikasi (YouTube)",
+                    url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+                },
+                // kalau mau kontrol penuh, isi embedUrl langsung
+                {
+                    title: "Presentasi Final (Embed URL)",
+                    embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+                    url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+                },
             ],
 
             notes: [

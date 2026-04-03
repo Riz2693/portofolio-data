@@ -222,7 +222,7 @@ export default function ProjectDetail({ params }) {
                                                                 title={video.title}
                                                                 className="w-full h-full"
                                                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                                                referrerpolicy="strict-origin-when-cross-origin"
+                                                                referrerPolicy="strict-origin-when-cross-origin"
                                                                 allowFullScreen
                                                             />
                                                         </div>

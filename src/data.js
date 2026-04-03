@@ -43,16 +43,16 @@ export const projects = [
 
             videos: [
                 // cukup pakai url YouTube/Vimeo, sistem akan auto-embed
-                {
-                    title: "Demo Aplikasi (YouTube)",
-                    url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-                },
-                // kalau mau kontrol penuh, isi embedUrl langsung
-                {
-                    title: "Presentasi Final (Embed URL)",
-                    embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-                    url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-                },
+                // {
+                //     title: "Demo Aplikasi (YouTube)",
+                //     url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+                // },
+                // // kalau mau kontrol penuh, isi embedUrl langsung
+                // {
+                //     title: "Presentasi Final (Embed URL)",
+                //     embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+                //     url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+                // },
             ],
 
             notes: [
@@ -545,7 +545,7 @@ export const sertifikasi = [
         tahun: "Mar 2024",
         link: "https://coursera.org/share/38d4c4e9fb7b48dfa69077c7d39e1bc2",
         image: "",
-        pdfFile: "/file/certification/Coursera Mathematics For Machine Learning and Data Science.pdf",
+        pdfFile: "/file/certification/Mathematics for Machine Learning and Data Science.pdf",
         kategori: "Sertifikat Course & Specialization",
     },
     {
@@ -596,6 +596,16 @@ export const sertifikasi = [
         link: "https://drive.google.com/file/d/1BVOWaxBBpA8SJpQBQuts8k1_QI7EBQXV/view",
         image: "",
         pdfFile: "/file/certification/Sertifikat IDCamp 2025 Level Menengah (Muhammad Faris Akbar).pdf",
+        kategori: "Sertifikat Kelulusan",
+    },
+    {
+        id: 10,
+        nama: "Bangkit Academy 2024 Batch 1 - Machine Learning",
+        penerbit: "Google, GoTo, Traveloka, Tokopedia",
+        tahun: "Juni 2024",
+        link: "https://drive.google.com/file/d/1cjSVJzQtCASqhDmIGDyZJHXLTXv5vvbt/view?usp=sharing",
+        image: "",
+        pdfFile: "/file/certification/[Bangkit 2024 Batch 1] Certificate - M179D4KY3291.pdf",
         kategori: "Sertifikat Kelulusan",
     },
 ];

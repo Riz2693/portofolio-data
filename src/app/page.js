@@ -23,8 +23,6 @@ import {
   Award,
   ExternalLink,
   Download,
-  Github,
-  Linkedin,
   Mail,
   HeartHandshake,
   Code2,
@@ -35,6 +33,8 @@ import {
   Send,
   MessageSquare,
 } from "lucide-react";
+
+import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 
 import ChatWidget from "../components/ChatWidget";
 
@@ -208,7 +208,7 @@ export default function Home() {
                     target="_blank"
                     className="p-2.5 md:p-3 bg-white/10 border border-white/20 backdrop-blur-md rounded-full hover:bg-white/20 text-white transition shadow-lg"
                   >
-                    <Github size={18} />
+                    <FaGithub size={18} />
                   </a>
                 )}
                 {profil?.kontak?.linkedin && (
@@ -217,7 +217,7 @@ export default function Home() {
                     target="_blank"
                     className="p-2.5 md:p-3 bg-white/10 border border-white/20 backdrop-blur-md rounded-full hover:bg-white/20 text-white transition shadow-lg"
                   >
-                    <Linkedin size={18} />
+                    <FaLinkedinIn size={18} />
                   </a>
                 )}
                 {profil?.kontak?.email && (
@@ -864,7 +864,7 @@ export default function Home() {
                       className="flex items-center gap-3 text-slate-700 dark:text-slate-300 hover:text-blue-700 dark:hover:text-blue-500 transition group"
                     >
                       <div className="p-2.5 bg-slate-100 dark:bg-slate-800 rounded-lg group-hover:bg-blue-100 dark:group-hover:bg-blue-900/30 transition">
-                        <Linkedin size={18} />
+                        <FaLinkedinIn size={18} />
                       </div>
                       <span className="text-sm font-medium">
                         {/* {profil.kontak.linkedin} */}

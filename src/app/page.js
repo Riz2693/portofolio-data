@@ -42,7 +42,6 @@ import PrintButton from "../components/PrintButton";
 import useIsMobile from "../hooks/useIsMobile";
 import CertificationThumbnail from "../components/CertificationThumbnail";
 
-
 export default function Home() {
   const componentRef = useRef();
   const isMobile = useIsMobile();

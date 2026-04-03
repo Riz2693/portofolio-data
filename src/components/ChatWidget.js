@@ -74,7 +74,7 @@ export default function ChatWidget() {
             {isOpen && (
                 <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700
                 w-79 h-[486px]
-                sm:w-93 sm:h-[356px]
+                sm:w-93 sm:h-[453px]
                 max-md:landscape:w-79 max-md:landscape:h-[196px] max-md:landscape:mb-1
                 rounded-3xl shadow-2xl mb-4 flex flex-col overflow-hidden animate-in slide-in-from-bottom-5">
                     {/* Header */}

@@ -72,7 +72,11 @@ export default function ChatWidget() {
         <div className="fixed bottom-4 right-3.5 z-50 flex flex-col items-end font-sans print:hidden">
             {/* --- JENDELA CHAT --- */}
             {isOpen && (
-                <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 w-80 sm:w-96 h-[500px] rounded-3xl shadow-2xl mb-4 flex flex-col overflow-hidden animate-in slide-in-from-bottom-5">
+                <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700
+                w-79 h-[486px]
+                sm:w-93 sm:h-[356px]
+                max-md:landscape:w-79 max-md:landscape:h-[196px] max-md:landscape:mb-1
+                rounded-3xl shadow-2xl mb-4 flex flex-col overflow-hidden animate-in slide-in-from-bottom-5">
                     {/* Header */}
                     <div className="bg-blue-600 p-4 flex justify-between items-center shadow-md">
                         <div className="flex items-center gap-2">

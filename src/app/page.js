@@ -293,7 +293,7 @@ export default function Home() {
                     Pengalaman Kerja/Magang
                   </span>
                 </div>
-                <div className="p-4 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 rounded-2xl hidden sm:block">
+                <div className="p-4 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 rounded-2xl hidden md:block">
                   <Briefcase size={28} />
                 </div>
               </div>

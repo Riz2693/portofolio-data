@@ -186,7 +186,7 @@ export default function Home() {
               </span>
             </h1>
             <p className="text-base md:text-lg lg:text-xl mb-8 text-slate-200 dark:text-slate-300 font-medium print:text-slate-600 max-w-2xl drop-shadow-md">
-              /*{profil?.peran || "Peranan Anda"}*/
+                {/* {profil?.peran || "Peranan Anda"} */}
                 Muhammad Faris Akbar
             </p>
 

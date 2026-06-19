@@ -89,7 +89,7 @@ export default function ChatWidget() {
     };
 
     return (
-        <div className="fixed bottom-4 right-3.5 z-50 flex flex-col items-end font-sans print:hidden">
+        <div className="fixed bottom-3 right-1.5 z-50 flex flex-col items-end font-sans print:hidden">
             {/* --- JENDELA CHAT --- */}
             {isOpen && (
                 <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700
@@ -192,7 +192,7 @@ export default function ChatWidget() {
             )}
 
             {/* --- WADAH TOMBOL TEMA, BAHASA & CHAT --- */}
-            <div className="flex flex-col items-center gap-3">
+            <div className="flex items-center gap-3">
                 {/* Tombol Toggle Theme */}
                 {mounted && (
                     <button

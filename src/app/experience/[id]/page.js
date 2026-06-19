@@ -1,28 +1,44 @@
 // src/app/experience/[id]/page.js
 "use client";
 
-import { useRouter } from "next/navigation";
-import { use } from "react";
+import { useParams, useRouter } from "next/navigation";
 import { profil, pengalaman } from "../../../data";
 import { ArrowLeft, Briefcase, Calendar } from "lucide-react";
 import ChatWidget from "../../../components/ChatWidget";
+import { useI18n } from "../../../i18n";
+import { homeContent } from "../../../homeContent";
 
 export default function ExperienceDetail({ params }) {
     const router = useRouter();
-    const { id } = use(params);
+    const { id } = useParams();
     const item = pengalaman.find((p) => p.id.toString() === id);
+    const { t, lang } = useI18n();
+    const translatedDetail =
+        lang === "en" ? homeContent.experiences[item?.id]?.detail || item?.detail : item?.detail;
+    const translatedType =
+        lang === "en"
+            ? item?.tipe === "Magang"
+                ? "Internship"
+                : item?.tipe === "Kontrak"
+                    ? "Contract"
+                    : item?.tipe === "Paruh Waktu"
+                        ? "Part-Time"
+                        : item?.tipe === "Kerja"
+                            ? "Work"
+                            : item?.tipe
+            : item?.tipe;
 
     if (!item) {
         return (
             <div className="min-h-screen flex flex-col items-center justify-center bg-slate-50 dark:bg-slate-950 transition-colors">
                 <h1 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
-                    Pengalaman Tidak Ditemukan
+                    {lang === "en" ? "Experience Not Found" : "Pengalaman Tidak Ditemukan"}
                 </h1>
                 <button
                     onClick={() => router.back()}
                     className="text-blue-600 dark:text-blue-400 hover:underline"
                 >
-                    &larr; Kembali
+                    &larr; {t("back")}
                 </button>
             </div>
         );
@@ -38,7 +54,7 @@ export default function ExperienceDetail({ params }) {
                         onClick={() => router.back()}
                         className="inline-flex items-center text-slate-500 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400 mb-8 transition-colors font-medium text-sm md:text-base"
                     >
-                        <ArrowLeft size={20} className="mr-2" /> Kembali
+                        <ArrowLeft size={20} className="mr-2" /> {t("back")}
                     </button>
 
                     <div className="mb-8 border-b border-slate-100 dark:border-slate-800 pb-8">
@@ -58,13 +74,13 @@ export default function ExperienceDetail({ params }) {
                                 <Calendar size={16} className="mr-2" /> {item.tahun}
                             </span>
                             <span className="inline-flex items-center text-xs md:text-sm font-bold text-orange-600 dark:text-orange-400 bg-orange-100 dark:bg-orange-900/30 px-4 py-1.5 rounded-full border border-orange-200 dark:border-orange-800/50">
-                                {item.tipe}
+                                {translatedType}
                             </span>
                         </div>
                     </div>
 
                     <div className="text-base md:text-lg leading-relaxed text-slate-700 dark:text-slate-300 space-y-6">
-                        {item.detail.split("\n").map((paragraph, idx) => (
+                        {translatedDetail.split("\n").map((paragraph, idx) => (
                             <p key={idx}>{paragraph}</p>
                         ))}
                     </div>

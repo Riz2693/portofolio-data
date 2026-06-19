@@ -3,10 +3,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import Navbar from "../components/Navbar";
 import { ThemeProvider } from "../components/ThemeProvider"; // Import provider
-
-// import Script from "next/script";
-import { Analytics } from '@vercel/analytics/next';
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { LanguageProvider } from "../i18n";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,11 +20,11 @@ export default function RootLayout({ children }) {
         className={`${inter.className} bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-200 transition-colors duration-300`}
       >
         <ThemeProvider>
-          <Navbar />
-          {children}
+          <LanguageProvider>
+            <Navbar />
+            {children}
+          </LanguageProvider>
         </ThemeProvider>
-        <SpeedInsights />
-        <Analytics />
       </body>
     </html>
   );

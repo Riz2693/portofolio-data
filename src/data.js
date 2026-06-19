@@ -34,31 +34,28 @@ export const projects = [
                     url: "https://github.com/Riz2693/Data-Engineering-Zoomcamp",
                     type: "repository",
                 },
-                {
-                    // label: "Live Demo",
-                    // url: "https://nama-project.vercel.app",
-                    // type: "demo",
-                },
             ],
 
             videos: [
                 // cukup pakai url YouTube/Vimeo, sistem akan auto-embed
-                // {
-                //     title: "Demo Aplikasi (YouTube)",
-                //     url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-                // },
-                // // kalau mau kontrol penuh, isi embedUrl langsung
-                // {
-                //     title: "Presentasi Final (Embed URL)",
-                //     embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-                //     url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-                // },
+                {
+                    title: "Demo Aplikasi (YouTube)",
+                    url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+                },
             ],
 
             notes: [
-                // "Model terbaik: XGBoost dengan AUC 0.89.",
-                // "Dataset berisi 50.000 baris setelah cleaning.",
-                // "Deployment awal menggunakan Vercel + API Route Next.js.",
+                "Model terbaik: XGBoost dengan AUC 0.89.",
+                "Dataset berisi 50.000 baris setelah cleaning.",
+                "Deployment awal menggunakan Vercel + API Route Next.js.",
+            ],
+
+            flowcharts: [
+                {
+                    title: "Arsitektur Data & Workflow",
+                    steps: ["Source Data", "ETL / Orchestration", "Data Warehouse", "Analytics & Dashboard"],
+                    description: "Flowchart menunjukkan alur ETL, pipeline, dan storage.",
+                },
             ],
         }
     },

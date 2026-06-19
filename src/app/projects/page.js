@@ -8,9 +8,11 @@ import { profil, projects } from "../../data";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import ChatWidget from "../../components/ChatWidget";
 import useIsMobile from "../../hooks/useIsMobile";
+import { useI18n } from "../../i18n";
 
 export default function AllProjects() {
     const isMobile = useIsMobile();
+    const { t, lang } = useI18n();
 
     const [activeFilter, setActiveFilter] = useState("Semua");
     const [currentPage, setCurrentPage] = useState(1);
@@ -76,13 +78,13 @@ export default function AllProjects() {
                             className="absolute left-0 top-1/2 -translate-y-1/2 flex items-center gap-2 text-slate-500 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400 transition font-medium text-sm md:text-base"
                         >
                             <ArrowLeft size={20} className="hidden sm:inline" />{" "}
-                            <span className="hidden sm:inline">Kembali</span>
+                            <span className="hidden sm:inline">{t("back")}</span>
                         </Link>
                         <h1 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">
-                            Semua Project
+                            {t("allProjects")}
                         </h1>
                         <p className="mt-4 text-slate-600 dark:text-slate-400 text-sm md:text-base">
-                            Jelajahi portofolio lengkap saya berdasarkan kategori.
+                            {lang === "en" ? "Explore my complete portfolio by category." : "Jelajahi portofolio lengkap saya berdasarkan kategori."}
                         </p>
                     </div>
 
@@ -97,7 +99,7 @@ export default function AllProjects() {
                                     : "bg-white text-slate-600 border border-slate-200 hover:border-blue-500 hover:text-blue-600 dark:bg-slate-900 dark:border-slate-700 dark:text-slate-300 dark:hover:border-blue-400"
                                     }`}
                             >
-                                {kategori}
+                                {kategori === "Semua" ? t("all") : kategori}
                             </button>
                         ))}
                     </div>
@@ -151,7 +153,7 @@ export default function AllProjects() {
                                             href={`/projects/${item.id}`}
                                             className="text-blue-600 dark:text-blue-400 text-[11px] md:text-xs font-semibold hover:underline flex items-center gap-1 print:hidden mt-auto w-fit"
                                         >
-                                            Lihat Detail <ArrowRight size={14} />
+                                            {t("viewDetail")} <ArrowRight size={14} />
                                         </Link>
                                     </div>
                                 </div>
@@ -160,7 +162,7 @@ export default function AllProjects() {
                     ) : (
                         <div className="bg-white dark:bg-slate-900 p-8 rounded-3xl border border-slate-200 dark:border-slate-800 print:bg-transparent print:border-none print:p-0 flex items-center justify-center min-h-[250px]">
                             <p className="text-sm text-slate-500 dark:text-slate-400 italic text-center print:text-left">
-                                Belum ada data project {activeFilter.toLowerCase()}.
+                                {lang === "en" ? `No project data for ${activeFilter.toLowerCase()}.` : `Belum ada data project ${activeFilter.toLowerCase()}.`}
                             </p>
                         </div>
                     )}
@@ -171,7 +173,7 @@ export default function AllProjects() {
                                 disabled={currentPageSafe === 1}
                                 className="px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-medium border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 disabled:opacity-50 disabled:cursor-not-allowed hover:border-blue-500 hover:text-blue-600 dark:hover:border-blue-400"
                             >
-                                Prev
+                                {t("prev")}
                             </button>
 
                             {Array.from({ length: totalPages }, (_, idx) => idx + 1).map(
@@ -194,7 +196,7 @@ export default function AllProjects() {
                                 disabled={currentPageSafe === totalPages}
                                 className="px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-medium border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 disabled:opacity-50 disabled:cursor-not-allowed hover:border-blue-500 hover:text-blue-600 dark:hover:border-blue-400"
                             >
-                                Next
+                                {t("next")}
                             </button>
                         </div>
                     )}

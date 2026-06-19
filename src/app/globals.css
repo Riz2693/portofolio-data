@@ -30,10 +30,48 @@
 } */
 
 body {
-  /* Set background default ke gelap dan teks terang */
-  background-color: #020617; /* slate-950 */
-  color: #e2e8f0; /* slate-200 */
+  /* Color tokens untuk theme sederhana: gelap & terang */
+  --bg-dark: #020617; /* slate-950 */
+  --bg-light: #f7fbff; /* very light */
+  --fg-dark: #e2e8f0; /* slate-200 */
+  --fg-light: #0f1724; /* slate-900 */
+  --accent: #6ee7b7; /* subtle mint accent */
+  --muted: #94a3b8;
+
+  background-color: var(--bg-dark);
+  color: var(--fg-dark);
+  transition: background-color 220ms ease, color 220ms ease;
 }
+
+/* Animations utilities (simple, small & performant) */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 420ms cubic-bezier(.2,.9,.2,1) both;
+}
+.slide-up {
+  animation: slideUp 420ms cubic-bezier(.2,.9,.2,1) both;
+}
+
+/* Subtle hover glow for futuristic feel */
+.frost-glow:hover {
+  box-shadow: 0 6px 18px rgba(46, 204, 175, 0.06), inset 0 1px 0 rgba(255,255,255,0.02);
+  transform: translateY(-2px);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+/* Accessibility: respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in, .slide-up { animation: none !important; }
+}
+
 
 /* ATURAN KHUSUS PRINT */
 @media print {

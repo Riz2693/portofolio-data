@@ -2,20 +2,40 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { MessageCircle, X, Send, Loader2, Sun, Moon } from "lucide-react"; // Tambahan Sun & Moon
+import { MessageCircle, X, Send, Loader2, Sun, Moon, Globe } from "lucide-react"; // Tambahan Sun, Moon, Globe
 import { useTheme } from "next-themes"; // Import untuk fitur Tema
 import ReactMarkdown from "react-markdown";
+import { useI18n } from "../i18n";
+
+function LanguageButton() {
+    const { lang, switchLang, t } = useI18n();
+
+    const next = lang === "en" ? "id" : "en";
+
+    return (
+        <button
+            onClick={() => switchLang(next)}
+            className="bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 p-2.5 rounded-full shadow-lg border border-slate-200 dark:border-slate-700 hover:scale-110 active:scale-95 transition-all flex items-center gap-2"
+            title={lang === "en" ? t("switchToIndonesian") : t("switchToEnglish")}
+            aria-label={t("toggleLanguage")}
+        >
+            <Globe size={16} />
+            <span className="text-xs font-medium">{lang === "en" ? "EN" : "ID"}</span>
+        </button>
+    );
+}
 
 export default function ChatWidget() {
     // --- 1. STATE UNTUK TEMA (DARK/LIGHT) ---
     const { theme, setTheme } = useTheme();
     const [mounted, setMounted] = useState(false); // Di sinilah 'mounted' dideklarasikan
+    const { t, lang } = useI18n();
 
     // --- 2. STATE UNTUK CHATBOT AI ---
     const [isOpen, setIsOpen] = useState(false);
     const [messages, setMessages] = useState([
         {
-            text: "Halo! Saya AI Assistant. Tanyakan apa saja tentang portofolio ini!",
+            text: t("chatGreeting"),
             isBot: true,
         },
     ]);
@@ -82,7 +102,7 @@ export default function ChatWidget() {
                         <div className="flex items-center gap-2">
                             <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
                             <h3 className="text-white font-bold text-sm">
-                                Portofolio AI Assistant
+                                {lang === "en" ? "Portfolio AI Assistant" : "Portofolio AI Assistant"}
                             </h3>
                         </div>
                         <button
@@ -120,7 +140,7 @@ export default function ChatWidget() {
                                                     ),
                                                 }}
                                             >
-                                                {msg.text}
+                                                {idx === 0 ? t("chatGreeting") : msg.text}
                                             </ReactMarkdown>
                                         </div>
                                     ) : (
@@ -139,7 +159,7 @@ export default function ChatWidget() {
                                         className="animate-spin text-blue-600 dark:text-blue-400"
                                     />
                                     <span className="text-xs text-slate-500 dark:text-slate-400">
-                                        Sedang mengetik...
+                                        {t("thinking")}
                                     </span>
                                 </div>
                             </div>
@@ -156,7 +176,7 @@ export default function ChatWidget() {
                             type="text"
                             value={input}
                             onChange={(e) => setInput(e.target.value)}
-                            placeholder="Tanyakan sesuatu..."
+                            placeholder={lang === "en" ? "Ask something..." : "Tanyakan sesuatu..."}
                             disabled={isLoading}
                             className="flex-1 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-200 text-sm rounded-full px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-600 border border-slate-200 dark:border-slate-700 placeholder:text-slate-500"
                         />
@@ -171,17 +191,22 @@ export default function ChatWidget() {
                 </div>
             )}
 
-            {/* --- WADAH TOMBOL TEMA & CHAT --- */}
-            <div className="flex items-center gap-3">
+            {/* --- WADAH TOMBOL TEMA, BAHASA & CHAT --- */}
+            <div className="flex flex-col items-center gap-3">
                 {/* Tombol Toggle Theme */}
                 {mounted && (
                     <button
                         onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
                         className="bg-white dark:bg-slate-800 text-slate-600 dark:text-yellow-400 p-2.5 rounded-full shadow-lg border border-slate-200 dark:border-slate-700 hover:scale-110 active:scale-95 transition-all"
-                        title="Ubah Tema"
+                        title="Toggle theme"
                     >
                         {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
                     </button>
+                )}
+
+                {/* Tombol Toggle Bahasa (single button) */}
+                {mounted && (
+                    <LanguageButton />
                 )}
 
                 {/* Tombol Bulat Chat AI */}

@@ -2,18 +2,19 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { useI18n } from "../i18n";
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
+    const { t, lang } = useI18n();
 
     const navLinks = [
-        { name: "Tentang", href: "/#about" },
-        { name: "Pengalaman", href: "/#resume_formal" },
-        // { name: "Pengalaman Non-Formal", href: "/#resume_nonformal" },
-        { name: "Project", href: "/#projects" },
-        { name: "Keahlian", href: "/#tech-stack" },
-        { name: "Sertifikasi", href: "/#certifications" },
-        { name: "Kontak", href: "/#contact" },
+        { name: t("navAbout"), href: "/#about" },
+        { name: t("navExperience"), href: "/#resume_formal" },
+        { name: t("navProject"), href: "/#projects" },
+        { name: t("navSkills"), href: "/#tech-stack" },
+        { name: t("navCertifications"), href: "/#certifications" },
+        { name: t("navContact"), href: "/#contact" },
     ];
 
     return (
@@ -23,7 +24,7 @@ export default function Navbar() {
                     href="/"
                     className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent"
                 >
-                    RisFolio
+                    {lang === "en" ? "RisFolio" : "RisFolio"}
                 </Link>
 
                 {/* Menu Desktop */}
@@ -37,6 +38,7 @@ export default function Navbar() {
                             {item.name}
                         </Link>
                     ))}
+
                 </div>
 
                 {/* Tombol Hamburger Mobile */}

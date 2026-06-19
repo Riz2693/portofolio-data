@@ -8,9 +8,11 @@ import { ArrowLeft, ExternalLink } from "lucide-react";
 import ChatWidget from "../../components/ChatWidget";
 import useIsMobile from "../../hooks/useIsMobile";
 import CertificationThumbnail from "../../components/CertificationThumbnail";
+import { useI18n } from "../../i18n";
 
 export default function AllCertifications() {
     const isMobile = useIsMobile();
+    const { t, lang } = useI18n();
 
     const [activeFilter, setActiveFilter] = useState("Semua");
     const [currentPage, setCurrentPage] = useState(1);
@@ -67,13 +69,13 @@ export default function AllCertifications() {
                             className="absolute left-0 top-1/2 -translate-y-1/2 flex items-center gap-2 text-slate-500 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400 transition font-medium text-sm md:text-base"
                         >
                             <ArrowLeft size={20} className="hidden sm:inline" />{" "}
-                            <span className="hidden sm:inline">Kembali</span>
+                            <span className="hidden sm:inline">{t("back")}</span>
                         </Link>
                         <h1 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">
-                            Semua Sertifikasi
+                            {t("allCertifications")}
                         </h1>
                         <p className="mt-4 text-slate-600 dark:text-slate-400 text-sm md:text-base">
-                            Jelajahi seluruh lisensi dan sertifikasi keahlian saya.
+                            {lang === "en" ? "Explore all licenses and certifications I have earned." : "Jelajahi seluruh lisensi dan sertifikasi keahlian saya."}
                         </p>
                     </div>
 
@@ -89,8 +91,8 @@ export default function AllCertifications() {
                                     }`}
                             >
                                 {kategori === "Course & Specialization Certificate"
-                                    ? "Course & Specialization Certificate"
-                                    : kategori}
+                                ? (lang === "en" ? "Course & Specialization" : "Course & Specialization")
+                                : (kategori === "Semua" ? t("all") : kategori)}
                             </button>
                         ))}
                     </div>
@@ -122,7 +124,7 @@ export default function AllCertifications() {
                                             {item.penerbit} • {item.tahun}
                                         </p>
                                         <div className="text-purple-600 dark:text-purple-400 text-xs md:text-sm font-semibold flex items-center gap-1 mt-auto w-fit">
-                                            Lihat Kredensial <ExternalLink size={14} />
+                                            {lang === "en" ? "View Credential" : "Lihat Kredensial"} <ExternalLink size={14} />
                                         </div>
                                     </div>
                                 </a>
@@ -131,7 +133,7 @@ export default function AllCertifications() {
                     ) : (
                         <div className="bg-white dark:bg-slate-900 p-8 rounded-3xl border border-slate-200 dark:border-slate-800 print:bg-transparent print:border-none print:p-0 flex items-center justify-center min-h-[250px]">
                             <p className="text-sm text-slate-500 dark:text-slate-400 italic text-center print:text-left">
-                                Belum ada data {activeFilter.toLowerCase()}.
+                                {lang === "en" ? `No data for ${activeFilter.toLowerCase()}.` : `Belum ada data ${activeFilter.toLowerCase()}.`}
                             </p>
                         </div>
                     )}
@@ -143,7 +145,7 @@ export default function AllCertifications() {
                                 disabled={currentPageSafe === 1}
                                 className="px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-medium border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 disabled:opacity-50 disabled:cursor-not-allowed hover:border-purple-500 hover:text-purple-600 dark:hover:border-purple-400"
                             >
-                                Prev
+                                {t("prev")}
                             </button>
 
                             {Array.from({ length: totalPages }, (_, idx) => idx + 1).map(
@@ -166,7 +168,7 @@ export default function AllCertifications() {
                                 disabled={currentPageSafe === totalPages}
                                 className="px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-medium border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 disabled:opacity-50 disabled:cursor-not-allowed hover:border-purple-500 hover:text-purple-600 dark:hover:border-purple-400"
                             >
-                                Next
+                                {t("next")}
                             </button>
                         </div>
                     )}

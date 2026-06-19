@@ -41,10 +41,14 @@ import ChatWidget from "../components/ChatWidget";
 import PrintButton from "../components/PrintButton";
 import useIsMobile from "../hooks/useIsMobile";
 import CertificationThumbnail from "../components/CertificationThumbnail";
+import { useI18n } from "../i18n";
+import { homeContent } from "../homeContent";
+import projectTranslations from "../data_en";
 
 export default function Home() {
   const componentRef = useRef();
   const isMobile = useIsMobile();
+  const { t, lang } = useI18n();
 
   // --- LOGIC CONTACT FORM (RESEND) ---
   const [formData, setFormData] = useState({ nama: "", email: "", pesan: "" });
@@ -152,6 +156,32 @@ export default function Home() {
   const totalPengalaman = pengalaman ? pengalaman.length : 0;
   const totalProject = projects ? projects.length : 0;
   const totalSertifikat = sertifikasi ? sertifikasi.length : 0;
+  const profileDescription =
+    lang === "en" ? homeContent.profileDescription : profil?.deskripsi;
+
+  const translateTechCategory = (kategori) => {
+    if (lang !== "en") return kategori;
+    if (kategori === "Bahasa Pemrograman") return "Programming Languages";
+    return kategori;
+  };
+
+  const translateExperienceType = (tipe) => {
+    if (lang !== "en") return tipe;
+    if (tipe === "Magang") return "Internship";
+    if (tipe === "Kontrak") return "Contract";
+    if (tipe === "Paruh Waktu") return "Part-Time";
+    if (tipe === "Kerja") return "Work";
+    return tipe;
+  };
+
+  const translateCertCategory = (kategori) => {
+    if (lang !== "en") return kategori;
+    if (kategori === "Sertifikat Internasional") return "International Certificate";
+    if (kategori === "Sertifikat Nasional") return "National Certificate";
+    if (kategori === "Sertifikat Course & Specialization") return "Course & Specialization Certificate";
+    if (kategori === "Sertifikat Kelulusan") return "Graduation Certificate";
+    return kategori;
+  };
 
   return (
     <div className="bg-slate-50 dark:bg-slate-950 min-h-screen transition-colors text-slate-900 dark:text-slate-200 font-sans">
@@ -180,14 +210,14 @@ export default function Home() {
 
           <div className="relative z-20 flex flex-col items-center pt-16">
             <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold mb-4 tracking-tight text-white print:text-black drop-shadow-lg">
-              Welcome To My{" "}
+              {lang === "en" ? "Welcome To My" : "Welcome To My"}{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 print:text-blue-700 print:bg-none">
-                {/* {profil?.nama || "Nama Anda"} */} Portfolio
+                {/* {profil?.nama || "Nama Anda"} */} {lang === "en" ? "Portfolio" : "Portfolio"}
               </span>
             </h1>
             <p className="text-base md:text-lg lg:text-xl mb-8 text-slate-200 dark:text-slate-300 font-medium print:text-slate-600 max-w-2xl drop-shadow-md">
-                {/* {profil?.peran || "Peranan Anda"} */}
-                Muhammad Faris Akbar
+              {/* {profil?.peran || "Peranan Anda"} */}
+              Muhammad Faris Akbar
             </p>
 
             <div className="flex flex-wrap gap-3 md:gap-4 justify-center print:hidden">
@@ -197,7 +227,7 @@ export default function Home() {
                   download
                   className="flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-6 py-2.5 md:py-3 rounded-full transition font-semibold text-xs md:text-sm shadow-lg"
                 >
-                  <Download size={18} /> Download CV
+                  <Download size={18} /> {t("downloadCv")}
                 </a>
               )}
               <PrintButton contentRef={componentRef} />
@@ -261,21 +291,21 @@ export default function Home() {
               <User size={20} />
             </div>
             <h2 className="text-xl md:text-2xl font-bold text-slate-900 dark:text-white print:text-black">
-              Tentang Saya
+              {lang === "en" ? "About Me" : "Tentang Saya"}
             </h2>
           </div>
 
           <div className="flex flex-col gap-5 md:gap-6">
             {/* ATAS: Deskripsi Diri (1 Section Penuh Persegi Panjang) */}
             <div className="bg-white dark:bg-slate-900 p-6 md:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm print:bg-transparent print:border-none print:p-0 w-full">
-              {profil?.deskripsi ? (
+              {profileDescription ? (
                 <p className="text-sm md:text-base text-slate-700 dark:text-slate-300 leading-relaxed text-justify print:text-black">
-                  {profil.deskripsi}
+                  {profileDescription}
                 </p>
               ) : (
                 <div className="flex items-center justify-center w-full min-h-[100px]">
                   <p className="text-sm text-slate-500 dark:text-slate-400 italic text-center print:text-left">
-                    Belum ada data deskripsi profil.
+                    {t("profileSummaryMissing")}
                   </p>
                 </div>
               )}
@@ -291,7 +321,7 @@ export default function Home() {
                     1+ Tahun
                   </span>
                   <span className="text-sm md:text-base text-slate-600 dark:text-slate-400 font-medium mt-1">
-                    Pengalaman Kerja/Magang
+                    {lang === "en" ? "Work / Internship Experience" : "Pengalaman Kerja/Magang"}
                   </span>
                 </div>
                 <div className="p-4 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 rounded-2xl hidden md:block">
@@ -305,7 +335,7 @@ export default function Home() {
                   {totalProject}+
                 </span>
                 <span className="text-xs md:text-sm text-slate-600 dark:text-slate-400 font-medium mt-2">
-                  Project Berhasil
+                  {lang === "en" ? "Completed Projects" : "Project Berhasil"}
                 </span>
               </div>
 
@@ -315,7 +345,7 @@ export default function Home() {
                   {totalSertifikat}+
                 </span>
                 <span className="text-xs md:text-sm text-slate-600 dark:text-slate-400 font-medium mt-2">
-                  Sertifikasi
+                  {lang === "en" ? "Certifications" : "Sertifikasi"}
                 </span>
               </div>
             </div>
@@ -332,7 +362,7 @@ export default function Home() {
               <LayoutGrid size={20} />
             </div>
             <h2 className="text-xl md:text-2xl font-bold text-slate-900 dark:text-white print:text-black">
-              Riwayat & Pengalaman Formal
+              {lang === "en" ? "Formal Experience" : "Riwayat & Pengalaman Formal"}
             </h2>
           </div>
 
@@ -346,7 +376,7 @@ export default function Home() {
                     <GraduationCap size={18} />
                   </div>
                   <h3 className="text-base md:text-lg font-bold text-slate-900 dark:text-white print:text-black w-full">
-                    Pendidikan
+                    {lang === "en" ? "Education" : "Pendidikan"}
                   </h3>
                 </div>
                 {pendidikan && pendidikan.length > 0 ? (
@@ -368,7 +398,7 @@ export default function Home() {
                 ) : (
                   <div className="flex-1 flex items-center justify-center min-h-[150px]">
                     <p className="text-sm text-slate-500 dark:text-slate-400 italic text-center print:text-left">
-                      Belum ada data pendidikan.
+                      {t("educationMissing")}
                     </p>
                   </div>
                 )}
@@ -381,7 +411,7 @@ export default function Home() {
                     <Briefcase size={18} />
                   </div>
                   <h3 className="text-base md:text-lg font-bold text-slate-900 dark:text-white print:text-black w-full">
-                    Pengalaman Kerja
+                    {lang === "en" ? "Work Experience" : "Pengalaman Kerja"}
                   </h3>
                 </div>
                 <div className="flex-1 max-h-[300px] overflow-y-auto pr-2 md:pr-3 print:max-h-none print:overflow-visible print:pr-0 [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:bg-slate-300 dark:[&::-webkit-scrollbar-thumb]:bg-slate-700 [&::-webkit-scrollbar-track]:bg-transparent flex flex-col">
@@ -407,17 +437,19 @@ export default function Home() {
                                 {item.instansi}
                               </p>
                               <span className="bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 text-[9px] px-1.5 py-0.5 rounded print:text-black print:bg-gray-100">
-                                {item.tipe}
+                                {translateExperienceType(item.tipe)}
                               </span>
                             </div>
                             <p className="text-slate-600 dark:text-slate-400 text-xs leading-relaxed mb-2 print:text-gray-700">
-                              {item.ringkasan}
-                            </p>
+                                  {lang === "en"
+                                    ? homeContent.experiences[item.id]?.summary || item.ringkasan
+                                    : item.ringkasan}
+                                </p>
                             <Link
                               href={`/experience/${item.id}`}
                               className="text-[10px] md:text-[11px] font-semibold text-blue-500 hover:text-blue-600 dark:text-blue-400 flex items-center gap-1 print:hidden w-fit"
                             >
-                              Detail Lengkap <ArrowRight size={10} />
+                              {lang === "en" ? "Full Detail" : "Detail Lengkap"} <ArrowRight size={10} />
                             </Link>
                           </div>
                         </div>
@@ -426,7 +458,7 @@ export default function Home() {
                   ) : (
                     <div className="flex-1 flex items-center justify-center min-h-[200px]">
                       <p className="text-sm text-slate-500 dark:text-slate-400 italic text-center print:text-left">
-                        Belum ada data pengalaman kerja.
+                        {t("experienceMissing")}
                       </p>
                     </div>
                   )}
@@ -446,7 +478,7 @@ export default function Home() {
               <LayoutGrid size={20} />
             </div>
             <h2 className="text-xl md:text-2xl font-bold text-slate-900 dark:text-white print:text-black">
-              Riwayat & Pengalaman Non Formal
+              {lang === "en" ? "Non-Formal Experience" : "Riwayat & Pengalaman Non Formal"}
             </h2>
           </div>
 
@@ -460,7 +492,7 @@ export default function Home() {
                     <Briefcase size={18} />
                   </div>
                   <h3 className="text-base md:text-lg font-bold text-slate-900 dark:text-white print:text-black w-full">
-                    Pelatihan
+                    {lang === "en" ? "Training" : "Pelatihan"}
                   </h3>
                 </div>
                 <div className="flex-1 max-h-[300px] overflow-y-auto pr-2 md:pr-3 print:max-h-none print:overflow-visible print:pr-0 [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:bg-slate-300 dark:[&::-webkit-scrollbar-thumb]:bg-slate-700 [&::-webkit-scrollbar-track]:bg-transparent flex flex-col">
@@ -490,7 +522,9 @@ export default function Home() {
                               </span>
                             </div>
                             <p className="text-slate-600 dark:text-slate-400 text-xs leading-relaxed mb-2 print:text-gray-700">
-                              {item.ringkasan}
+                              {lang === "en"
+                                ? homeContent.trainings[item.id]?.summary || item.ringkasan
+                                : item.ringkasan}
                             </p>
                           </div>
                         </div>
@@ -499,7 +533,7 @@ export default function Home() {
                   ) : (
                     <div className="flex-1 flex items-center justify-center min-h-[200px]">
                       <p className="text-sm text-slate-500 dark:text-slate-400 italic text-center print:text-left">
-                        Belum ada data pengalaman non formal.
+                        {t("nonFormalMissing")}
                       </p>
                     </div>
                   )}
@@ -513,7 +547,7 @@ export default function Home() {
                     <HeartHandshake size={18} />
                   </div>
                   <h3 className="text-base md:text-lg font-bold text-slate-900 dark:text-white print:text-black w-full">
-                    Volunteer
+                    {lang === "en" ? "Volunteer" : "Volunteer"}
                   </h3>
                 </div>
                 <div className="flex-1 max-h-[320px] overflow-y-auto pr-2 print:max-h-none print:overflow-visible print:pr-0 [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:bg-slate-300 dark:[&::-webkit-scrollbar-thumb]:bg-slate-700 [&::-webkit-scrollbar-track]:bg-transparent flex flex-col">
@@ -542,7 +576,7 @@ export default function Home() {
                   ) : (
                     <div className="flex-1 flex items-center justify-center min-h-[150px]">
                       <p className="text-sm text-slate-500 dark:text-slate-400 italic text-center print:text-left">
-                        Belum ada data volunteer.
+                        {t("volunteerMissing")}
                       </p>
                     </div>
                   )}
@@ -562,7 +596,7 @@ export default function Home() {
               <Folder size={20} />
             </div>
             <h2 className="text-xl md:text-2xl font-bold text-slate-900 dark:text-white print:text-black">
-              Project Unggulan
+              {t("featuredProjects")}
             </h2>
           </div>
           {projects && projects.length > 0 && (
@@ -573,7 +607,7 @@ export default function Home() {
                   onClick={() => setActiveProjectFilter(kategori)}
                   className={`px-3 md:px-4 py-1.5 rounded-full text-xs md:text-sm font-medium transition-all duration-300 ${activeProjectFilter === kategori ? "bg-blue-600 text-white shadow-sm" : "bg-white text-slate-600 border border-slate-200 hover:border-blue-500 hover:text-blue-600 dark:bg-slate-900 dark:border-slate-700 dark:text-slate-300 dark:hover:border-blue-400"}`}
                 >
-                  {kategori}
+                  {kategori === "Semua" ? t("all") : translateTechCategory(kategori)}
                 </button>
               ))}
             </div>
@@ -603,7 +637,9 @@ export default function Home() {
                   </div>
                   <div className="p-4 md:p-5 flex-1 flex flex-col">
                     <h3 className="text-base md:text-lg font-bold mb-2 text-slate-900 dark:text-white print:text-black">
-                      {item.judul}
+                      {lang === "en"
+                        ? projectTranslations[item.id]?.judul || item.judul
+                        : item.judul}
                     </h3>
                     <div className="flex flex-wrap gap-1.5 mb-3">
                       {item.kategori.map((tag, idx) => (
@@ -616,13 +652,15 @@ export default function Home() {
                       ))}
                     </div>
                     <p className="text-xs md:text-sm text-slate-600 dark:text-slate-400 mb-4 line-clamp-3 print:text-slate-700 flex-1">
-                      {item.ringkasan}
+                      {lang === "en"
+                        ? projectTranslations[item.id]?.ringkasan || item.ringkasan
+                        : item.ringkasan}
                     </p>
                     <Link
                       href={`/projects/${item.id}`}
                       className="text-blue-600 dark:text-blue-400 text-[11px] md:text-xs font-semibold hover:underline flex items-center gap-1 print:hidden mt-auto w-fit"
                     >
-                      Lihat Detail <ArrowRight size={14} />
+                      {t("viewDetail")} <ArrowRight size={14} />
                     </Link>
                   </div>
                 </div>
@@ -631,7 +669,7 @@ export default function Home() {
           ) : (
             <div className="bg-white dark:bg-slate-900 p-8 rounded-3xl border border-slate-200 dark:border-slate-800 print:bg-transparent print:border-none print:p-0 flex items-center justify-center min-h-[250px]">
               <p className="text-sm text-slate-500 dark:text-slate-400 italic text-center print:text-left">
-                Belum ada data project unggulan.
+                {t("projectMissing")}
               </p>
             </div>
           )}
@@ -641,7 +679,7 @@ export default function Home() {
                 href="/projects"
                 className="inline-flex items-center gap-1.5 px-5 py-2 md:py-2.5 rounded-full bg-slate-200 text-slate-700 text-xs md:text-sm font-semibold hover:bg-slate-300 hover:text-blue-600 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700 transition"
               >
-                Semua Project <ArrowRight size={16} />
+                {t("allProjects")} <ArrowRight size={16} />
               </Link>
             </div>
           )}
@@ -657,7 +695,7 @@ export default function Home() {
               <Code2 size={20} />
             </div>
             <h2 className="text-xl md:text-2xl font-bold text-slate-900 dark:text-white print:text-black">
-              Keahlian & Teknologi
+              {lang === "en" ? "Skills & Technology" : "Keahlian & Teknologi"}
             </h2>
           </div>
           <div className="bg-white dark:bg-slate-900 p-5 md:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm print:bg-transparent print:border-none print:p-0">
@@ -669,7 +707,7 @@ export default function Home() {
                     onClick={() => setActiveTechFilter(kategori)}
                     className={`px-3 md:px-4 py-1.5 rounded-full text-xs md:text-sm font-medium transition-all duration-300 ${activeTechFilter === kategori ? "bg-emerald-600 text-white shadow-sm" : "bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700"}`}
                   >
-                    {kategori}
+                    {kategori === "Semua" ? t("all") : kategori}
                   </button>
                 ))}
               </div>
@@ -704,7 +742,7 @@ export default function Home() {
             ) : (
               <div className="flex items-center justify-center w-full min-h-[150px]">
                 <p className="text-sm text-slate-500 dark:text-slate-400 italic text-center print:text-left">
-                  Belum ada data keahlian & teknologi.
+                  {t("techMissing")}
                 </p>
               </div>
             )}
@@ -721,7 +759,7 @@ export default function Home() {
               <Award size={20} />
             </div>
             <h2 className="text-xl md:text-2xl font-bold text-slate-900 dark:text-white print:text-black">
-              Sertifikasi & Lisensi
+              {lang === "en" ? "Certifications & Licenses" : "Sertifikasi & Lisensi"}
             </h2>
           </div>
 
@@ -737,9 +775,7 @@ export default function Home() {
                     : "bg-white text-slate-600 border border-slate-200 hover:border-purple-500 hover:text-purple-600 dark:bg-slate-900 dark:border-slate-700 dark:text-slate-300 dark:hover:border-purple-400"
                     }`}
                 >
-                  {kategori === "Course and Specialization Certificate"
-                    ? "Course & Specialization"
-                    : kategori}
+                  {kategori === "Semua" ? t("all") : translateCertCategory(kategori)}
                 </button>
               ))}
             </div>
@@ -761,7 +797,7 @@ export default function Home() {
                     {/* Label Kategori */}
                     <div className="mb-2 print:hidden">
                       <span className="text-[9px] md:text-[10px] font-medium px-2 py-0.5 rounded bg-purple-50 text-purple-600 border border-purple-100 dark:bg-purple-900/30 dark:text-purple-300 dark:border-purple-800">
-                        {item.kategori || "Certificate"}
+                        {translateCertCategory(item.kategori || "Certificate")}
                       </span>
                     </div>
                     <h3 className="text-base md:text-lg font-bold mb-2 text-slate-900 dark:text-white print:text-black line-clamp-2">
@@ -771,7 +807,7 @@ export default function Home() {
                       {item.penerbit} • {item.tahun}
                     </p>
                     <div className="text-purple-600 dark:text-purple-400 text-xs md:text-sm font-semibold flex items-center gap-1 mt-auto w-fit">
-                      Lihat Kredensial <ExternalLink size={14} />
+                      {lang === "en" ? "View Credential" : "Lihat Kredensial"} <ExternalLink size={14} />
                     </div>
                   </div>
                 </a>
@@ -780,7 +816,7 @@ export default function Home() {
           ) : (
             <div className="bg-white dark:bg-slate-900 p-8 rounded-3xl border border-slate-200 dark:border-slate-800 print:bg-transparent print:border-none print:p-0 flex items-center justify-center min-h-[250px]">
               <p className="text-sm text-slate-500 dark:text-slate-400 italic text-center print:text-left">
-                Belum ada data sertifikasi di kategori ini.
+                {t("certMissing")}
               </p>
             </div>
           )}
@@ -792,7 +828,7 @@ export default function Home() {
                 href="/certifications"
                 className="inline-flex items-center gap-1.5 px-5 py-2 md:py-2.5 rounded-full bg-slate-200 text-slate-700 text-xs md:text-sm font-semibold hover:bg-slate-300 hover:text-purple-600 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700 transition"
               >
-                Semua Sertifikasi <ArrowRight size={16} />
+                {lang === "en" ? "All Certifications" : "Semua Sertifikasi"} <ArrowRight size={16} />
               </Link>
             </div>
           )}
@@ -809,13 +845,13 @@ export default function Home() {
             </div>
 
             <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white text-center mb-3">
-              Mari Berkolaborasi
+              {lang === "en" ? "Let's Collaborate" : "Mari Berkolaborasi"}
             </h2>
 
             <p className="text-slate-600 dark:text-slate-400 text-center max-w-xl text-sm md:text-base">
-              Apakah Anda memiliki proyek menarik atau peluang karir? Jangan
-              ragu untuk menghubungi saya melalui form di bawah atau melalui
-              media sosial saya.
+              {lang === "en"
+                ? "Do you have an interesting project or career opportunity? Feel free to contact me using the form below or through my social media."
+                : "Apakah Anda memiliki proyek menarik atau peluang karir? Jangan ragu untuk menghubungi saya melalui form di bawah atau melalui media sosial saya."}
             </p>
           </div>
 
@@ -824,11 +860,12 @@ export default function Home() {
             <div className="md:col-span-2 flex flex-col gap-6">
               <div>
                 <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">
-                  Informasi Kontak
+                {lang === "en" ? "Contact Information" : "Informasi Kontak"}
                 </h3>
                 <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
-                  Saya terbuka untuk peluang karir, kolaborasi proyek,
-                  maupun pekerjaan penuh waktu.
+                {lang === "en"
+                  ? "I am open to career opportunities, project collaborations, and full-time positions."
+                  : "Saya terbuka untuk peluang karir, kolaborasi proyek, maupun pekerjaan penuh waktu."}
                 </p>
 
                 <div className="space-y-4">
@@ -885,21 +922,23 @@ export default function Home() {
                 {/* Pesan Notifikasi Berhasil/Gagal */}
                 {submitStatus === "success" && (
                   <div className="bg-green-50 text-green-600 border border-green-200 dark:bg-green-900/20 dark:border-green-800 p-3 rounded-xl text-sm font-medium">
-                    Pesan berhasil dikirim! Saya akan segera membalas email
-                    Anda.
+                    {lang === "en"
+                      ? "Message sent successfully! I will reply to your email soon."
+                      : "Pesan berhasil dikirim! Saya akan segera membalas email Anda."}
                   </div>
                 )}
                 {submitStatus === "error" && (
                   <div className="bg-red-50 text-red-600 border border-red-200 dark:bg-red-900/20 dark:border-red-800 p-3 rounded-xl text-sm font-medium">
-                    Gagal mengirim pesan. Silakan coba lagi nanti atau hubungi
-                    via WhatsApp.
+                    {lang === "en"
+                      ? "Failed to send message. Please try again later or contact me via WhatsApp."
+                      : "Gagal mengirim pesan. Silakan coba lagi nanti atau hubungi via WhatsApp."}
                   </div>
                 )}
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="flex flex-col gap-1.5">
                     <label className="text-xs font-semibold text-slate-700 dark:text-slate-300 ml-1">
-                      Nama Lengkap
+                      {lang === "en" ? "Full Name" : "Nama Lengkap"}
                     </label>
                     <input
                       type="text"
@@ -907,7 +946,7 @@ export default function Home() {
                       onChange={(e) =>
                         setFormData({ ...formData, nama: e.target.value })
                       }
-                      placeholder="Masukkan nama Anda"
+                      placeholder={lang === "en" ? "Enter your name" : "Masukkan nama Anda"}
                       disabled={isSubmitting}
                       className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition disabled:opacity-50"
                       required
@@ -915,7 +954,7 @@ export default function Home() {
                   </div>
                   <div className="flex flex-col gap-1.5">
                     <label className="text-xs font-semibold text-slate-700 dark:text-slate-300 ml-1">
-                      Email Anda
+                      {lang === "en" ? "Your Email" : "Email Anda"}
                     </label>
                     <input
                       type="email"
@@ -923,7 +962,7 @@ export default function Home() {
                       onChange={(e) =>
                         setFormData({ ...formData, email: e.target.value })
                       }
-                      placeholder="Masukkan email Anda"
+                      placeholder={lang === "en" ? "Enter your email" : "Masukkan email Anda"}
                       disabled={isSubmitting}
                       className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition disabled:opacity-50"
                       required
@@ -932,7 +971,7 @@ export default function Home() {
                 </div>
                 <div className="flex flex-col gap-1.5">
                   <label className="text-xs font-semibold text-slate-700 dark:text-slate-300 ml-1">
-                    Pesan
+                  {lang === "en" ? "Message" : "Pesan"}
                   </label>
                   <textarea
                     rows="4"
@@ -940,7 +979,11 @@ export default function Home() {
                     onChange={(e) =>
                       setFormData({ ...formData, pesan: e.target.value })
                     }
-                    placeholder="Halo, saya ingin berdiskusi tentang..."
+                    placeholder={
+                      lang === "en"
+                        ? "Hello, I would like to discuss..."
+                        : "Halo, saya ingin berdiskusi tentang..."
+                    }
                     disabled={isSubmitting}
                     className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition resize-none disabled:opacity-50"
                     required
@@ -952,7 +995,7 @@ export default function Home() {
                   disabled={isSubmitting}
                   className="mt-2 w-full sm:w-auto flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-8 py-3 rounded-xl font-semibold transition shadow-md shadow-blue-500/20 disabled:opacity-70 disabled:cursor-not-allowed"
                 >
-                  {isSubmitting ? "Mengirim..." : "Kirim Pesan"}{" "}
+                  {isSubmitting ? (lang === "en" ? "Sending..." : "Mengirim...") : (lang === "en" ? "Send Message" : "Kirim Pesan")}{" "}
                   <Send size={16} />
                 </button>
               </form>

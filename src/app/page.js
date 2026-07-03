@@ -318,7 +318,7 @@ export default function Home() {
                 <div className="flex flex-col">
                   <span className="text-3xl text-center md:text-4xl font-bold text-emerald-600 dark:text-emerald-400">
                     {/* {totalPengalaman} */}
-                    1+ Tahun
+                    1+ {lang === "en" ? "Year" : "Tahun"}
                   </span>
                   <span className="text-sm md:text-base text-slate-600 dark:text-slate-400 font-medium mt-1">
                     {lang === "en" ? "Work / Internship Experience" : "Pengalaman Kerja/Magang"}

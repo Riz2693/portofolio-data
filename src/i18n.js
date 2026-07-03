@@ -4,6 +4,7 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useRef, use
 
 export const translations = {
   id: {
+    year: "Tahun",
     back: "Kembali",
     projectNotFound: "Project Tidak Ditemukan",
     additionalInfo: "Informasi Tambahan",

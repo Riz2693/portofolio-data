@@ -4,7 +4,6 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useRef, use
 
 export const translations = {
   id: {
-    year: "Tahun",
     back: "Kembali",
     projectNotFound: "Project Tidak Ditemukan",
     additionalInfo: "Informasi Tambahan",
@@ -136,7 +135,7 @@ export function LanguageProvider({ children }) {
           setLang(stored);
         }, 0);
       }
-    } catch (error) {}
+    } catch (error) { }
 
     initializedRef.current = true;
 
@@ -153,7 +152,7 @@ export function LanguageProvider({ children }) {
     try {
       localStorage.setItem("lang", lang);
       document.documentElement.lang = lang;
-    } catch (error) {}
+    } catch (error) { }
 
     const root = document;
     const nodes = root.querySelectorAll("[data-i18n-key]");
@@ -180,7 +179,7 @@ export function LanguageProvider({ children }) {
     try {
       localStorage.setItem("lang", nextLang);
       document.documentElement.lang = nextLang;
-    } catch (error) {}
+    } catch (error) { }
 
     if (typeof window !== "undefined") {
       window.location.reload();
@@ -214,8 +213,8 @@ export function useI18n() {
   if (!context) {
     return {
       lang: "id",
-      switchLang: () => {},
-      setLang: () => {},
+      switchLang: () => { },
+      setLang: () => { },
       t: (key) => translations.id[key] || key,
     };
   }

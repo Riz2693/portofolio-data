@@ -441,10 +441,10 @@ export default function Home() {
                               </span>
                             </div>
                             <p className="text-slate-600 dark:text-slate-400 text-xs leading-relaxed mb-2 print:text-gray-700">
-                                  {lang === "en"
-                                    ? homeContent.experiences[item.id]?.summary || item.ringkasan
-                                    : item.ringkasan}
-                                </p>
+                              {lang === "en"
+                                ? homeContent.experiences[item.id]?.summary || item.ringkasan
+                                : item.ringkasan}
+                            </p>
                             <Link
                               href={`/experience/${item.id}`}
                               className="text-[10px] md:text-[11px] font-semibold text-blue-500 hover:text-blue-600 dark:text-blue-400 flex items-center gap-1 print:hidden w-fit"
@@ -860,12 +860,12 @@ export default function Home() {
             <div className="md:col-span-2 flex flex-col gap-6">
               <div>
                 <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">
-                {lang === "en" ? "Contact Information" : "Informasi Kontak"}
+                  {lang === "en" ? "Contact Information" : "Informasi Kontak"}
                 </h3>
                 <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
-                {lang === "en"
-                  ? "I am open to career opportunities, project collaborations, and full-time positions."
-                  : "Saya terbuka untuk peluang karir, kolaborasi proyek, maupun pekerjaan penuh waktu."}
+                  {lang === "en"
+                    ? "I am open to career opportunities, project collaborations, and full-time positions."
+                    : "Saya terbuka untuk peluang karir, kolaborasi proyek, maupun pekerjaan penuh waktu."}
                 </p>
 
                 <div className="space-y-4">
@@ -971,7 +971,7 @@ export default function Home() {
                 </div>
                 <div className="flex flex-col gap-1.5">
                   <label className="text-xs font-semibold text-slate-700 dark:text-slate-300 ml-1">
-                  {lang === "en" ? "Message" : "Pesan"}
+                    {lang === "en" ? "Message" : "Pesan"}
                   </label>
                   <textarea
                     rows="4"

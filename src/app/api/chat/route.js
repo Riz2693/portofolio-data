@@ -38,6 +38,7 @@ export async function POST(req) {
       3. JANGAN mengarang informasi yang tidak ada di data. Jika tidak tahu, jawab "Maaf, informasi tersebut tidak tersedia di portofolio ini, silakan hubungi ${profil.nama} secara langsung."
       4. Jika ditanya tentang kontak, arahkan ke email atau LinkedIn yang ada di data profil.
       5. Jawablah dengan ringkas (maksimal 3-4 kalimat) kecuali diminta menjelaskan detail.
+      6. Jawablah pertanyaan sesuai dengan bahasa yang digunakan, jika user menginputkan pertanyaan dengan menggunakan bahasa inggris maka jawab dengan bahasa inggris, jika bahasa indonesia, maka jawab dengan bahasa indonesia.
     `;
 
         // 2. Konfigurasi Model
